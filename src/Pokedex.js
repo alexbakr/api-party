@@ -62,6 +62,78 @@ class GithubUser extends Component {
         return table
     }
 
+pokemonStats() {
+        var table = []
+        var tableHeads=[]
+        var tableData=[]
+        const{ pokedex } = this.state
+        if(!pokedex.types){
+            return
+        }
+        for (var i = 0; i < pokedex.stats.length; i++){
+            tableHeads.push(
+                <th key={pokedex.stats[i].stat.name}>{pokedex.stats[i].stat.name}</th>
+            )
+            tableData.push(
+                <td key={pokedex.stats[i].stat.url}>{pokedex.stats[i].base_stat}</td>
+            )
+        }
+        table.push(
+            <table className="StatTable">
+                <caption>Stats</caption>
+                <thead>
+                <tr>
+                    {tableHeads}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {tableData}
+                </tr>
+                </tbody>
+            </table>
+        )
+        return table
+    }
+
+    pokemonAbilities() {
+        var table = []
+        var abilities = []
+        var abilityNumber = []
+        const{ pokedex } = this.state
+        if(!pokedex.types){
+            return
+        }
+        for (var i = 0; i < pokedex.abilities.length; i++){
+            abilityNumber.push(
+                <th key={pokedex.abilities[i].ability.url}>
+                    Ability#{i+1}
+                </th>
+            )
+            abilities.push(
+                <td key={pokedex.abilities[i].ability.name}>
+                    {pokedex.abilities[i].ability.name}
+                </td>
+            )
+        }
+        table.push(
+            <table className="abilityTable">
+                <caption>Abilities</caption>
+                <thead>
+                    <tr>
+                        {abilityNumber}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {abilities}
+                    </tr>
+                </tbody>
+            </table>
+        )
+        return table
+    }
+
   render() {
     const { user } = this.state
     return (
