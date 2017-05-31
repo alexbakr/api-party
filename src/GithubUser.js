@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import "./GithubUser.css"
+=======
+import './GithubUser.css'
+>>>>>>> 09fb4270aac75af196a47d9a695df4d921085a09
 
 class GithubUser extends Component {
   state = {
@@ -19,16 +23,28 @@ class GithubUser extends Component {
   }
 
   fetchUserData = (props) => {
+<<<<<<< HEAD
     fetch(`https://api.github.com/users/${this.props.match.params.username}`)
+=======
+    fetch(`https://api.github.com/users/${props.match.params.username}`)
+>>>>>>> 09fb4270aac75af196a47d9a695df4d921085a09
       .then(response => response.json())
       .then(user => this.setState({ user }))
   }
 
+<<<<<<< HEAD
   componentWillRecieveProps(nextProps) {
       const locationChanged = nextProps.location !== this.props.location
       if (locationChanged){
           this.fetchUserData(nextProps)
       }
+=======
+  componentWillReceiveProps(nextProps) {
+    const locationChanged = (nextProps.location !== this.props.location)
+    if (locationChanged) {
+      this.fetchUserData(nextProps)
+    }
+>>>>>>> 09fb4270aac75af196a47d9a695df4d921085a09
   }
 
   render() {
